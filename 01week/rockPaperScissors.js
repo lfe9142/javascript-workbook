@@ -34,8 +34,8 @@ const scissors = "scissors";
 
 function rockPaperScissors(hand1, hand2) {
   // Write code here
-  hand1 = hand1.toLowerCase();
-  hand2 = hand2.toLowerCase();
+  hand1 = hand1.toLowerCase().trim();
+  hand2 = hand2.toLowerCase().trim();
 
   let message = "";
 
