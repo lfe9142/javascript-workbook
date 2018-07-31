@@ -22,18 +22,19 @@ const rl = readline.createInterface({
 //  if hand2 is rock, hand1 wins,
 //  if hand2 is scissors, hand2 wins
 
-//output messages
-const hand1WinsMessage = "Hand one wins!"
-const hand2WinsMessage = "Hand two wins!"
-const tieMessage = "It's a tie!"
 
-//
-const rock = "rock";
-const paper = "paper";
-const scissors = "scissors";
 
 function rockPaperScissors(hand1, hand2) {
-  // Write code here
+  //output messages
+  const hand1WinsMessage = "Hand one wins!"
+  const hand2WinsMessage = "Hand two wins!"
+  const tieMessage = "It's a tie!"
+
+  //
+  const rock = "rock";
+  const paper = "paper";
+  const scissors = "scissors";
+  
   hand1 = hand1.toLowerCase().trim();
   hand2 = hand2.toLowerCase().trim();
 
@@ -67,8 +68,8 @@ function rockPaperScissors(hand1, hand2) {
         break;
     }
   }
-
-  console.log(message);
+  
+  return message;
 }
 
 function getPrompt() {
