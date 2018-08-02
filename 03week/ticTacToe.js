@@ -43,8 +43,15 @@ const didColumnWin=(column)=> board[0][column] != ' '
 
 //will return true if [0][0] [1][1] [2][2]  or [0][2] [1][1] [2][0] has either 3 X or 3 O
 function diagonalWin() {
-  
+  return didBackSlashDiagonalWin() || didForwardSlashDiagonalWin();
 }
+
+const didBackSlashDiagonalWin=()=>   board[0][0] != ' ' && board[0][0] == board[1][1] 
+          && board[1][1] == board[2][2];
+
+const didForwardSlashDiagonalWin=()=> board[0][2] != ' ' && board[0][2] == board[1][1] 
+          && board[1][1] == board[2][0];
+
 
 //will return true if horizontalWin, verticalWin() or diagonalWin() is true
 function checkForWin() {
@@ -54,11 +61,15 @@ function checkForWin() {
 function ticTacToe(row, column) {
   if(isInputVaild(row, column)) {
     board[row][column] = playerTurn;
-  }
-  if(checkForWin()) {
-    console.log("You win!");
+
+    if(checkForWin()) {
+      console.log("You win!");
+      return true;
+    } else {
+      switchPlayer()
+    }
   } else {
-    switchPlayer()
+    console.log("Please use valid input");
   }
 }
 
