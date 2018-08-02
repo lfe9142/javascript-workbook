@@ -22,19 +22,22 @@ function printBoard() {
   console.log('  ---------');
   console.log('2 ' + board[2].join(' | '));
 }
-
+//will return true if and row has either 3 X or 3 Y
 function horizontalWin() {
   // Your code here
 }
 
+//will return true if any column has either 3 X or 3 Y
 function verticalWin() {
   // Your code here
 }
 
+//will return true if [0][0] [1][1] [2][2]  or [0][2] [1][1] [2][0] has either 3 X or 3 Y
 function diagonalWin() {
   // Your code here
 }
 
+//will return true if horizontalWin, verticalWin() or diagonalWin() is true
 function checkForWin() {
   // Your code here
 }
@@ -42,6 +45,23 @@ function checkForWin() {
 function ticTacToe(row, column) {
   // Your code here
 }
+
+//Whiteboard/Plan:
+//Steps:
+//if input is vaild
+//add marker to board
+//check for win
+//switch user
+
+//isInputVaild(row, column)
+//accepts a row and a column
+//returns true if both row and column are numbers on the 
+//game board and the location has not already been used
+//else returns false
+
+//switchPlayer()
+//if playerTurn is X make it Y
+//if playerTurn is Y make it X
 
 function getPrompt() {
   printBoard();
