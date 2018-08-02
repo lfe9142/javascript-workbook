@@ -98,13 +98,8 @@ const isSpaceEmpty=(row, column)=> board[row][column] == ' ';
 //switchPlayer()
 //if playerTurn is X make it Y
 //if playerTurn is Y make it X
-const switchPlayer=()=> {
-  if(playerTurn == 'X') {
-    playerTurn = 'O';
-  } else {
-    playerTurn = 'X';
-  }
-}
+const switchPlayer=()=> playerTurn == 'X' ? playerTurn = 'O' : playerTurn = 'X';
+
 
 function getPrompt() {
   printBoard();
