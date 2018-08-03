@@ -5,5 +5,6 @@ const printListOfOlympians=(olympicArr)=> {
     });
 }
 //comment 1s
+//comment 2
 const testArr = ["nameOne", "nameTwo", "namethree", "name4", "name4"];
 printListOfOlympians(testArr);
