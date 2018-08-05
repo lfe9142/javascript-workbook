@@ -19,16 +19,41 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
-
+//movePiece(startStack, endStack)
+//acceots two strings: startStack and endStack
+//moves the last elements from the startStack array to the last position in the endStack array
+function movePiece(startStack, endStack) {
+  stacks[endStack].push(stacks[startStack].pop());
 }
 
-function isLegal() {
-  // Your code here
-
+//isLegal(startStack, endStack)
+//accepts two strings: startStack and endStack
+//returns true if both strings are legal stacks
+//and if the top piece of the startStack can be moved to the endStack 
+//(piece is smaller then the top endstack piece)
+function isLegal(startStack, endStack) {
+  return isLegalStack(startStack) && isLegalStack(endStack) && isLegalMove(startStack, endStack)
 }
 
+//isLegalStack(stack)
+//accepts string
+//returns true if stack is a, b, or c
+const isLegalStack=(stack)=> stack == 'a' || stack == 'b' || stack == 'c'
+
+//isLegalMove(startStack, endStack)
+const isLegalMove=(startStack, endStack)=> {
+  const startStackArr = stacks[startStack]
+  const endStackArr = stacks[endStack]
+  if(endStackArr.length == 0) {
+    return true;
+  } else {
+    return startStackArr[startStackArr.length - 1] < endStackArr[endStackArr.length -1];
+  }
+}
+
+
+//returns true if all elements in the array are in acending order, are in only one array 
+//and are not in array 'a'
 function checkForWin() {
   // Your code here
 
@@ -36,8 +61,14 @@ function checkForWin() {
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
-
+  console.log(isLegalMove(startStack, endStack));
+  movePiece(startStack, endStack);
 }
+
+//Whiteboard/Plan:
+//if move is legal
+//move piece
+//then check if the user one
 
 function getPrompt() {
   printStacks();
