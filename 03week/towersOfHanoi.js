@@ -41,6 +41,7 @@ function isLegal(startStack, endStack) {
 const isLegalStack=(stack)=> stack == 'a' || stack == 'b' || stack == 'c'
 
 //isLegalMove(startStack, endStack)
+//returns true if last element of endStack is greater then last element of start stack
 const isLegalMove=(startStack, endStack)=> {
   const startStackArr = stacks[startStack]
   const endStackArr = stacks[endStack]
@@ -55,20 +56,30 @@ const isLegalMove=(startStack, endStack)=> {
 //returns true if all elements in the array are in acending order, are in only one array 
 //and are not in array 'a'
 function checkForWin() {
-  // Your code here
+  if(stacks.a.length > 0) {
+    return false
+  } 
+}
 
+
+
+const reset=()=> {
+  stacks = {
+    a: [4, 3, 2, 1],
+    b: [],
+    c: []
+  };
 }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
-  console.log(isLegalMove(startStack, endStack));
-  movePiece(startStack, endStack);
+  console.log(checkForWin())
 }
 
 //Whiteboard/Plan:
 //if move is legal
 //move piece
-//then check if the user one
+//then check if the user won
 
 function getPrompt() {
   printStacks();
