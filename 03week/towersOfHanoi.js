@@ -59,9 +59,16 @@ function checkForWin() {
   if(stacks.a.length > 0) {
     return false
   } 
+  return isStackEqualToSolution('b') || isStackEqualToSolution('c');
 }
 
-
+//isStackEqualToSolution(stackName)
+//accepts a string that is a stack name
+//returns true if the stack matchs [4, 3, 2, 1]
+const isStackEqualToSolution=(stackName)=> {
+  const stack = stacks[stackName]
+  return stack[0] == 4 && stack[1] == 3 && stack[2] == 2 && stack[3] == 1
+}
 
 const reset=()=> {
   stacks = {
@@ -73,7 +80,6 @@ const reset=()=> {
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
-  console.log(checkForWin())
 }
 
 //Whiteboard/Plan:
