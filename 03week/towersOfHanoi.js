@@ -79,7 +79,14 @@ const reset=()=> {
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
+  if(isLegal(startStack, endStack)) {
+    movePiece(startStack, endStack)
+    if(checkForWin()) {
+      console.log("You win!");
+    }
+  } else {
+    console.log("Please enter a legal move");
+  }
 }
 
 //Whiteboard/Plan:
@@ -126,6 +133,7 @@ if (typeof describe === 'function') {
       assert.equal(isLegal('a', 'c'), true);
     });
   });
+
   describe('#checkForWin()', () => {
     it('should detect a win', () => {
       stacks = { a: [], b: [4, 3, 2, 1], c: [] };
@@ -135,6 +143,15 @@ if (typeof describe === 'function') {
     });
   });
 
+  describe('#reset()', () =>{
+    it('should reset stack to original', () => {
+      stacks = { a: [], b: [4, 3], c: [2, 1] };
+      reset();
+      assert.deepEqual(stacks, { a: [4, 3, 2, 1], b: [],c: [] });
+    });
+  });
+
+  
 } else {
 
   getPrompt();
