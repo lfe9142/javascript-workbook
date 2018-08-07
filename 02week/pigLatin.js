@@ -29,27 +29,29 @@ const lowercaseAndTrimString=(word)=> word.trim().toLowerCase();
 
 //isLetterVowel(letter)
 //returns true if letter equals a e i o or u
-const isLetterVowel=(letter)=> letter == 'a' || letter == 'e' ||  letter == 'i' || letter == 'o' || letter == 'u';
-
+const isLetterVowel=(letter)=> {
+  return letter == 'a' || letter == 'e' ||  letter == 'i' || letter == 'o' || letter == 'u';
+}
 //putLetterOnEnd(wordArray)
 //loop though wordArray until we come to a vowel
 //for each letter 
 //use array.length() and array.slice()
 const putLeadingconsonantsAtEnd=(wordArray)=> {
-  let leadingConsonants = [];
-  let currentIndex = 0;
-  for(currentIndex = 0; currentIndex < wordArray.length; currentIndex++) {
-    let currentLetter = wordArray[currentIndex];
+  const leadingConsonants = [];
+  for(let currentIndex = 0; currentIndex < wordArray.length; currentIndex++) {
+    const currentLetter = wordArray[currentIndex];
     console.log(currentLetter);
     if(isLetterVowel(currentLetter)) {
+      const trailingWord = wordArray.slice(currentIndex, wordArray.length);
+      return trailingWord.concat(leadingConsonants);
       break;
     }
 
     leadingConsonants.push(currentLetter);
   }
 
-  const trailingWord = wordArray.slice(currentIndex, wordArray.length);
-  return trailingWord.concat(leadingConsonants);
+ // const trailingWord = wordArray.slice(currentIndex, wordArray.length);
+ // return trailingWord.concat(leadingConsonants);
 }
 
 //addAYToEnd(wordArray)
@@ -62,7 +64,7 @@ const addYAYToEnd=(wordArray)=> wordArray.join('') + "yay";
 function pigLatin(word) {
   // Your code here
   if(isValidInput(word)) {
-    let wordArray = lowercaseAndTrimString(word).split('');
+    const wordArray = lowercaseAndTrimString(word).split('');
 
     if(isLetterVowel(wordArray[0])) {
       return addYAYToEnd(wordArray);
