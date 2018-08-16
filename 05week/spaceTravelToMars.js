@@ -22,9 +22,18 @@ class CrewMember {
   }
 }
 
-// class Ship {
+ class Ship {
+   constructor(name, type, ability) {
+     this.name = name;
+     this.type = type;
+     this.ability = ability;
+     this.crew = [];
+   }
 
-// }
+   missionStatement() {
+     
+   }
+}
 //tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
