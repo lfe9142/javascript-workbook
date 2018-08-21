@@ -27,6 +27,7 @@ class Board {
       }
     }
   }
+
   viewGrid() {
     // add our column numbers
     let string = "  0 1 2 3 4 5 6 7\n";
@@ -52,8 +53,54 @@ class Board {
     console.log(string);
   }
 
-  // Your code here
+  //method to put all pieces in their starting locations
+  populateGrid() {
+    for(let row = 0; row < 3; row++) {
+      for(let column = 0; column < 8; column++) {
+        if((column + row) % 2 != 0) {
+          this.grid[row][column] = new Piece("X");
+        }
+      }
+    }
+
+    for(let row = 5; row < 8; row++) {
+      for(let column = 0; column < 8; column++) {
+        if((column + row) % 2 != 0) {
+          this.grid[row][column] = new Piece("O");
+        }
+      }
+    }
+  }
+
 }
+
+//00 01 02 03 04 
+//10 11 12 13 14
+//Steps 
+//switch player
+//move piece
+//check for win
+
+
+//functions/methods we need
+//moveChecker(fromLocation, toLocation)
+
+//isValidMove(fromLocation, toLocation)
+//cant move to "white spaces" on board
+//cant move diagonal if next next space is taken
+//cant move out of the grid
+
+//win condition
+//tie condition
+
+//capturePiece()
+
+//setBoard() 
+//set pices for board
+
+//switchPlayer()
+
+//move by 11 or 9
 
 class Game {
   constructor() {
@@ -61,6 +108,13 @@ class Game {
   }
   start() {
     this.board.createGrid();
+    this.board.populateGrid();
+  }
+}
+
+class Piece {
+  constructor(symbol) {
+    this.symbol = symbol;
   }
 }
 
@@ -73,6 +127,7 @@ function getPrompt() {
     });
   });
 }
+
 
 const game = new Game();
 game.start();
