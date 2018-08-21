@@ -8,8 +8,15 @@ const rl = readline.createInterface({
 });
 
 
+
+
+//Steps 
+//switch player
+//move piece
+//check for win
 function Checker() {
   // Your code here
+  console.log("here");
 }
 
 class Board {
@@ -74,12 +81,7 @@ class Board {
 
 }
 
-//00 01 02 03 04 
-//10 11 12 13 14
-//Steps 
-//switch player
-//move piece
-//check for win
+
 
 
 //functions/methods we need
@@ -97,7 +99,6 @@ class Board {
 
 //switchPlayer()
 
-//move by 11 or 9
 
 class Game {
   constructor() {
@@ -158,6 +159,17 @@ class Game {
       return false;
     }
 
+    //move space is either one diagonal space away
+    const rowDiff = Math.abs(whichRow - toWhereRow);
+    const columnDiff = Math.abs(whichColumn- toWhereColumn);
+    if(rowDiff != 1 && columnDiff != 1) {
+      console.log("**space to far away");
+      return false;
+    } 
+
+    //or is a jump
+
+
     return true;
   }
 
@@ -200,7 +212,7 @@ function getPrompt() {
 const game = new Game();
 game.start();
 //game.moveChecker('01', '44');
-console.log(game.isValidMove('01', '21'));
+//console.log(game.isValidMove('21', '30'));
 
 
 // Tests
