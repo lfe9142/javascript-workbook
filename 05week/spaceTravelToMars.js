@@ -19,6 +19,7 @@ class CrewMember {
 
   enterShip(ship) {
     this.ship = ship;
+    ship.crew.push(this)
   }
 }
 
