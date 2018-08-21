@@ -110,8 +110,25 @@ class Game {
     this.board.createGrid();
     this.board.populateGrid();
   }
+
+  //method that will take two strings the first one being the grid location of the first piece
+  //and the second one is the grid location of where the piece should be moved
+  //the method will move the piece to the new location
+  //this method assumes the piece exists and the location is a vaild one
+  moveChecker(whichPiece, toWhere) {
+    const whichArr = whichPiece.split('');
+    const whichRow = parseInt(whichArr[0], 10);
+    const whichColumn = parseInt(whichArr[1], 10);
+
+    const whereArr = toWhere.split('');
+    const whereRow = parseInt(whereArr[0], 10);
+    const whereColumn = parseInt(whereArr[1], 10);
+    this.board.grid[whereRow][whereColumn] = this.board.grid[whichRow][whichColumn];
+    this.board.grid[whichRow][whichColumn] = null;
+  }
 }
 
+//Class that will repersent the pieces, contains a symbol that will be set to X or O
 class Piece {
   constructor(symbol) {
     this.symbol = symbol;
@@ -131,6 +148,7 @@ function getPrompt() {
 
 const game = new Game();
 game.start();
+game.moveChecker('01', '44');
 
 
 // Tests
