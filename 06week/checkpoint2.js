@@ -88,13 +88,14 @@ const weather = [
 ]
 
 //using a higher order function, create an array of the unique 'weather_state_name' values of the weather array. Your function should return the following array ['Light Cloud', 'Heavy Cloud', 'Showers']
-const seenWeather = [];
-const weatherStates = weather.map((obj) => {
-  if(seenWeather.indexOf(obj.weather_state_name) == -1) {
-    seenWeather.push(obj.weather_state_name);
-    return obj.weather_state_name;
+const weatherStates = weather.reduce((acc, item, index) =>{
+  if(acc.indexOf(item.weather_state_name) == -1) {
+    acc.push(item.weather_state_name);
   }
-});
+  return acc;
+}, [])
+
+
 console.log(weatherStates)
 
 //find the id of the object in weather that has a min_temp of 15.915
