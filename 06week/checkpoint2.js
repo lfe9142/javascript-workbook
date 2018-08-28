@@ -16,9 +16,7 @@ nums.forEach((num) => {
 console.log(sumEvens);
 
 // Find the index of the first "Austin" value (the value plus its index equals 512)
-const atxIdx = nums.findIndex((num, index) => {
-  return (num + index) == 512;
-});
+const atxIdx = nums.findIndex((num, index) => (num + index) == 512);
 
 console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
 
@@ -95,7 +93,5 @@ console.log(weatherStates)
 
 //find the id of the object in weather that has a min_temp of 15.915
 
-const idealTemp = weather.find((obj) => {
-  return obj.min_temp == 15.915;
-}).id;
+const idealTemp = weather.find((obj) => obj.min_temp == 15.915).id;
 console.log(idealTemp)
