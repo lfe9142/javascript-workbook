@@ -19,25 +19,80 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
-
+//movePiece(startStack, endStack)
+//acceots two strings: startStack and endStack
+//moves the last elements from the startStack array to the last position in the endStack array
+function movePiece(startStack, endStack) {
+  stacks[endStack].push(stacks[startStack].pop());
 }
 
-function isLegal() {
-  // Your code here
-
+//isLegal(startStack, endStack)
+//accepts two strings: startStack and endStack
+//returns true if both strings are legal stacks
+//and if the top piece of the startStack can be moved to the endStack 
+//(piece is smaller then the top endstack piece)
+function isLegal(startStack, endStack) {
+  return isLegalStack(startStack) && isLegalStack(endStack) && isLegalMove(startStack, endStack)
 }
 
+//isLegalStack(stack)
+//accepts string
+//returns true if stack is a, b, or c
+const isLegalStack=(stack)=> stack == 'a' || stack == 'b' || stack == 'c'
+
+//isLegalMove(startStack, endStack)
+//returns true if last element of endStack is greater then last element of start stack
+const isLegalMove=(startStack, endStack)=> {
+  const startStackArr = stacks[startStack]
+  const endStackArr = stacks[endStack]
+  if(endStackArr.length == 0) {
+    return true;
+  } else {
+    return startStackArr[startStackArr.length - 1] < endStackArr[endStackArr.length -1];
+  }
+}
+
+
+//returns true if all elements in the array are in acending order, are in only one array 
+//and are not in array 'a'
 function checkForWin() {
-  // Your code here
+  if(stacks.a.length > 0) {
+    return false
+  } 
+  return isStackEqualToSolution('b') || isStackEqualToSolution('c');
+}
 
+//isStackEqualToSolution(stackName)
+//accepts a string that is a stack name
+//returns true if the stack matchs [4, 3, 2, 1]
+const isStackEqualToSolution=(stackName)=> {
+  const stack = stacks[stackName]
+  return stack[0] == 4 && stack[1] == 3 && stack[2] == 2 && stack[3] == 1
+}
+
+const reset=()=> {
+  stacks = {
+    a: [4, 3, 2, 1],
+    b: [],
+    c: []
+  };
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
-
+  if(isLegal(startStack, endStack)) {
+    movePiece(startStack, endStack)
+    if(checkForWin()) {
+      console.log("You win!");
+    }
+  } else {
+    console.log("Please enter a legal move");
+  }
 }
+
+//Whiteboard/Plan:
+//if move is legal
+//move piece
+//then check if the user won
 
 function getPrompt() {
   printStacks();
@@ -78,6 +133,7 @@ if (typeof describe === 'function') {
       assert.equal(isLegal('a', 'c'), true);
     });
   });
+
   describe('#checkForWin()', () => {
     it('should detect a win', () => {
       stacks = { a: [], b: [4, 3, 2, 1], c: [] };
@@ -87,6 +143,15 @@ if (typeof describe === 'function') {
     });
   });
 
+  describe('#reset()', () =>{
+    it('should reset stack to original', () => {
+      stacks = { a: [], b: [4, 3], c: [2, 1] };
+      reset();
+      assert.deepEqual(stacks, { a: [4, 3, 2, 1], b: [],c: [] });
+    });
+  });
+
+  
 } else {
 
   getPrompt();
